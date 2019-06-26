@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Formulário Pratos</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script defer src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<form action="/prato/salvar" method="post" th:object="${prato}">
+		<input type="hidden" th:field="*{id}">
+		<label for="nome">Nome: </label> 
+		<input type="text" placeholder="Digite o nome aqui" th:field="*{nome}">
+		<label for="preco">Preco: </label>
+		<input type="number" placeholder="Digite o preco aqui" th:field="*{preco}">
+		<button type="submit">Salvar</button>
+	</form>
+</body>
+</html>

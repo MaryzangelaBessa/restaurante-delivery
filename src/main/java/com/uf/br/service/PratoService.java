@@ -1,12 +1,12 @@
-package com.ufc.br.service;
+package com.uf.br.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ufc.br.model.Prato;
-import com.ufc.br.repository.PratoRepository;
+import com.uf.br.model.Prato;
+import com.uf.br.repository.PratoRepository;
 
 @Service
 public class PratoService {
@@ -22,7 +22,11 @@ public class PratoService {
 		return pratoRepository.findAll();
 	}
 
-	public void remove(Long id) {
+	public void delete(Long id) {
 		pratoRepository.deleteById(id);
+	}
+
+	public Prato findById(Long id) {
+		return pratoRepository.getOne(id);
 	}
 }

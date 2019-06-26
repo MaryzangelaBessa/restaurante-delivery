@@ -1,4 +1,4 @@
-package com.ufc.br.model;
+package com.uf.br.model;
 
 import java.util.Date;
 
@@ -86,5 +86,4 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
 }

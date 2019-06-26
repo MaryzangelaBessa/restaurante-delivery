@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listagem | Pratos</title>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script defer src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<h1>Pratos</h1>
+<ul th:each="prato : ${pratos}">
+	<li th:text="${prato.id}"></li>
+	<li th:text="${prato.nome}"></li>
+	<li th:text="${prato.preco}"></li>
+	<li><a th:href="@{/prato/excluir/{id}(id=${prato.id})}">Deletar</a></li>
+	<li><a th:href="@{/prato/atualizar/{id}(id=${prato.id})}">Atualizar</a></li>
+</ul>
+</body>
+</html>
