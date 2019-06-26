@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,7 +26,7 @@ public class Usuario {
 	@NotEmpty(message = "Preencha o CPF do usuario")
 	private String cpf;
 
-	@NotEmpty(message = "Preencha a data de nascimento do usuario")
+	@NotNull(message = "Preencha a data de nascimento do usuario")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
@@ -38,6 +39,14 @@ public class Usuario {
 
 	@NotEmpty(message = "Preencha a senha do usuario")
 	private String senha;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;

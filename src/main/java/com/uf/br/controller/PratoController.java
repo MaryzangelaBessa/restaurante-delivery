@@ -40,7 +40,7 @@ public class PratoController {
 	@PostMapping("/salvar")
 	public String save(@Validated Prato prato, BindingResult result) {
 		if (result.hasErrors())
-			return "cadastro";
+			return "CadastroPrato";
 		pratoService.create(prato);
 		return "redirect:listar";
 	}

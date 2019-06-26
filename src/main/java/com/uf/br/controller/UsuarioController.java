@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +17,7 @@ import com.uf.br.model.Usuario;
 import com.uf.br.service.UsuarioService;
 
 @Controller
-@RequestMapping("/usuario")
+@RequestMapping("/usuario/")
 public class UsuarioController {
 
 	@Autowired
@@ -40,24 +39,25 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/salvar")
-	public ModelAndView save(@Validated Usuario usuario, BindingResult result) {
-		ModelAndView mv = new ModelAndView("CadastroUsuario");
+	public String save(@Validated Usuario usuario, BindingResult result) {
 
 		if (result.hasErrors())
-			return mv;
+			return "CadastroUsuario";
 		usuarioService.create(usuario);
-		mv.addObject("mensagem", "Pessoa cadastrada com Sucesso!");
-		return mv;
+
+		return "redirect:listar";
 	}
 
-	@DeleteMapping("/excluir/{id}")
-	public ModelAndView delete(@PathVariable Long id) {
+	@GetMapping("/excluir/{id}")
+	public String delete(@PathVariable Long id, Model model) {
 		usuarioService.delete(id);
-		ModelAndView mv = new ModelAndView("redirect: /usuario/listar");
-		return mv;
+		model.addAttribute("usuarios", usuarioService.read());
+		return "ListarUsuarios";
 	}
 
-	@PutMapping("/atualizar/{id}")
+	@GetMapping("/atualizar/{id}")
+	// TODO:
+	// Testar atualizar de Usuário (método, templates, ...)
 	public ModelAndView update(@PathVariable Long id) {
 		Usuario usuario = usuarioService.findById(id);
 		ModelAndView mv = new ModelAndView("CadastroPratos");
