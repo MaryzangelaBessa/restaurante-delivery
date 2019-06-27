@@ -56,11 +56,9 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/atualizar/{id}")
-	// TODO:
-	// Testar atualizar de Usuário (método, templates, ...)
 	public ModelAndView update(@PathVariable Long id) {
 		Usuario usuario = usuarioService.findById(id);
-		ModelAndView mv = new ModelAndView("CadastroPratos");
+		ModelAndView mv = new ModelAndView("CadastroUsuario");
 		mv.addObject("usuario", usuario);
 		return mv;
 	}
