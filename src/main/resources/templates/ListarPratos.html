@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
 <title>Listagem | Pratos</title>
@@ -8,13 +10,13 @@
 </head>
 
 <body>
-<h1>Pratos</h1>
-<ul th:each="prato : ${pratos}">
-	<li th:text="${prato.id}"></li>
-	<li th:text="${prato.nome}"></li>
-	<li th:text="${prato.preco}"></li>
-	<li><a th:href="@{/prato/excluir/{id}(id=${prato.id})}">Deletar</a></li>
-	<li><a th:href="@{/prato/atualizar/{id}(id=${prato.id})}">Atualizar</a></li>
-</ul>
+	<h1>Pratos</h1>
+	<ul th:each="prato : ${pratos}">
+		<li th:text="${prato.id}"></li>
+		<li th:text="${prato.nome}"></li>
+		<li th:text="${prato.preco}"></li>
+		<li><a th:href="@{/prato/excluir/{id}(id=${prato.id})}">Deletar</a></li>
+		<li><a th:href="@{/prato/atualizar/{id}(id=${prato.id})}">Atualizar</a></li>
+	</ul>
 </body>
 </html>

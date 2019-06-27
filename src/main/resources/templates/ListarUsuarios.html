@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
 <title>Listagem | Usuários</title>
@@ -8,16 +10,16 @@
 </head>
 
 <body>
-<h1>Usuarios</h1>
-<ul th:each="usuario : ${usuarios}">
-	<li th:text="${usuario.id}"></li>
-	<li th:text="${usuario.nome}"></li>
-	<li th:text="${usuario.cpf}"></li>
-	<li th:text="${usuario.dataNascimento}"></li>
-	<li th:text="${usuario.endereco}"></li>
-	<li th:text="${usuario.email}"></li>
-	<li><a th:href="@{/usuario/excluir/{id}(id=${usuario.id})}">Deletar</a></li>
-	<li><a th:href="@{/usuario/atualizar/{id}(id=${usuario.id})}">Atualizar</a></li>
-</ul>
+	<h1>Usuarios</h1>
+	<ul th:each="usuario : ${usuarios}">
+		<li th:text="${usuario.id}"></li>
+		<li th:text="${usuario.nome}"></li>
+		<li th:text="${usuario.cpf}"></li>
+		<li th:text="${usuario.dataNascimento}"></li>
+		<li th:text="${usuario.endereco}"></li>
+		<li th:text="${usuario.email}"></li>
+		<li><a th:href="@{/usuario/excluir/{id}(id=${usuario.id})}">Deletar</a></li>
+		<li><a th:href="@{/usuario/atualizar/{id}(id=${usuario.id})}">Atualizar</a></li>
+	</ul>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
 <title>Formulário Pratos</title>
@@ -9,11 +11,10 @@
 
 <body>
 	<form action="/prato/salvar" method="post" th:object="${prato}">
-		<input type="hidden" th:field="*{id}">
-		<label for="nome">Nome: </label> 
-		<input type="text" placeholder="Digite o nome aqui" th:field="*{nome}">
-		<label for="preco">Preco: </label>
-		<input type="number" placeholder="Digite o preco aqui" th:field="*{preco}">
+		<input type="hidden" th:field="*{id}"> <label for="nome">Nome:
+		</label> <input type="text" placeholder="Digite o nome aqui"
+			th:field="*{nome}"> <label for="preco">Preco: </label> <input
+			type="number" placeholder="Digite o preco aqui" th:field="*{preco}">
 		<button type="submit">Salvar</button>
 	</form>
 </body>

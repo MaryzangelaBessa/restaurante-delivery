@@ -30,6 +30,11 @@ public class UsuarioController {
 		return mv;
 	}
 
+	@GetMapping("/login")
+	public String loginUsuario() {
+		return "FormLogin";
+	}
+
 	@GetMapping("/listar")
 	public ModelAndView read() {
 		List<Usuario> usuarios = usuarioService.read();

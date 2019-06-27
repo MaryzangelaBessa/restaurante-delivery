@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
 <title>Cadastro Usuário</title>
@@ -9,25 +11,18 @@
 
 <body>
 	<form action="/usuario/salvar" method="post" th:object="${usuario}">
-		<input type="hidden" th:field="*{id}">
-		<label for="nome">Nome: </label> 
-		<input type="text" placeholder="Digite o nome aqui" th:field="*{nome}">
-		<br/>
-		<label for="preco">CPF: </label>
-		<input type="number" placeholder="Digite o cpf aqui" th:field="*{cpf}">
-		<br/>
-		<label for="nome">Data de nascimento: </label> 
-		<input type="text" placeholder="dd/mm/aaaa" th:field="*{dataNascimento}">
-		<br/>
-		<label for="nome">Endereço: </label> 
-		<input type="text" placeholder="Digite o endereço aqui" th:field="*{endereco}">
-		<br/>
-		<label for="nome">E-mail: </label> 
-		<input type="email" placeholder="Digite o email aqui" th:field="*{email}">
-		<br/>
-		<label for="nome">senha: </label> 
-		<input type="password" placeholder="Digite a senha aqui" th:field="*{senha}">
-		<br/>
+		<input type="hidden" th:field="*{id}"> <label for="nome">Nome:
+		</label> <input type="text" placeholder="Digite o nome aqui"
+			th:field="*{nome}"> <br /> <label for="preco">CPF: </label> <input
+			type="number" placeholder="Digite o cpf aqui" th:field="*{cpf}">
+		<br /> <label for="nome">Data de nascimento: </label> <input
+			type="text" placeholder="dd/mm/aaaa" th:field="*{dataNascimento}">
+		<br /> <label for="nome">Endereço: </label> <input type="text"
+			placeholder="Digite o endereço aqui" th:field="*{endereco}">
+		<br /> <label for="nome">E-mail: </label> <input type="email"
+			placeholder="Digite o email aqui" th:field="*{email}"> <br />
+		<label for="nome">senha: </label> <input type="password"
+			placeholder="Digite a senha aqui" th:field="*{senha}"> <br />
 		<button type="submit">Salvar</button>
 	</form>
 </body>
