@@ -17,6 +17,7 @@
 		<li th:text="${prato.preco}"></li>
 		<li><a th:href="@{/prato/excluir/{id}(id=${prato.id})}">Deletar</a></li>
 		<li><a th:href="@{/prato/atualizar/{id}(id=${prato.id})}">Atualizar</a></li>
+		<li><a th:href="@{/carrinho/adicionar/{id}(id=${prato.id})}">Comprar</a></li>
 	</ul>
 </body>
 </html>

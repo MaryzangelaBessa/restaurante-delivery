@@ -1,5 +1,7 @@
 package com.uf.br.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,9 @@ public class Prato {
 	private String nome;
 
 	@NotNull(message = "Preencha o preço do prato.")
-	private float preco;
+	private BigDecimal preco;
+
+	private int quantidade;
 
 	public long getId() {
 		return id;
@@ -36,11 +40,21 @@ public class Prato {
 		this.nome = nome;
 	}
 
-	public float getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
-	public void setPreco(float preco) {
+	// TODO: Adicionar imagem
+
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 }

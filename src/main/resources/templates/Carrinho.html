@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8">
+<title>Carrinho</title>
+</head>
+<body>
+	<h1>Pratos pedidos</h1>
+	<table>
+		<tr th:each="prato : ${pratos.entrySet()}">
+			<td th:text="${prato.getKey().id}"></td>
+			<td th:text="${prato.getKey().nome}">
+			<td th:text="${prato.getKey().preco}"></td>
+			<td th:text="${prato.getValue()}"></td>
+			<td><a class="btn btn-danger"
+				th:href="@{/carrinho/remover/{id}(id = ${prato.getKey().id})}">Remover
+					Prato</a></td>
+		</tr>
+		<a class="btn btn-primary" th:href="@{'/carrinho/finalizar/'}">Finalizar
+			Pedido</a>
+		<h2 th:inline="text">Total do Pedido:[[${total}]]</h2>
+	</table>
+</body>
+</html>
