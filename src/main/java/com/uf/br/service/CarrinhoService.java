@@ -64,8 +64,7 @@ public class CarrinhoService {
 			entry.getKey().setQuantidade(prato.getQuantidade() - entry.getValue());
 		}
 		pratoRepository.saveAll(pratos.keySet());
-		// Descubra...
-		// pratoRepository.flush();
+		pratoRepository.flush();
 		// pratoRepository.clear();
 	}
 

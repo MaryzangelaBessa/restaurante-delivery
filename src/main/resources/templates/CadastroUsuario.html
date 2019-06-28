@@ -10,20 +10,65 @@
 </head>
 
 <body>
-	<form action="/usuario/salvar" method="post" th:object="${usuario}">
-		<input type="hidden" th:field="*{id}"> <label for="nome">Nome:
-		</label> <input type="text" placeholder="Digite o nome aqui"
-			th:field="*{nome}"> <br /> <label for="preco">CPF: </label> <input
-			type="number" placeholder="Digite o cpf aqui" th:field="*{cpf}">
-		<br /> <label for="nome">Data de nascimento: </label> <input
-			type="text" placeholder="dd/mm/aaaa" th:field="*{dataNascimento}">
-		<br /> <label for="nome">Endereço: </label> <input type="text"
-			placeholder="Digite o endereço aqui" th:field="*{endereco}">
-		<br /> <label for="nome">E-mail: </label> <input type="email"
-			placeholder="Digite o email aqui" th:field="*{email}"> <br />
-		<label for="nome">senha: </label> <input type="password"
-			placeholder="Digite a senha aqui" th:field="*{senha}"> <br />
-		<button type="submit">Salvar</button>
-	</form>
+	<nav id="top" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{'/'}">Tempero Bessa</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{'/'}">Inicio</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{'/pratos/listar'}">Pratos</a></li>
+				<li sec:authorize="isAnonymous()" class="nav-item"><a
+					class="nav-link" th:href="@{'/usuario/login'}">Login</a></li>
+				<li sec:authorize="isAnonymous()" class="nav-item"><a
+					class="nav-link" th:href="@{'/usuario/cadastro'}">Cadastro</a></li>
+			</ul>
+			<span sec:authorize="isAuthenticated()" class="text-light mr-1">Olá,
+				[[${#httpServletRequest.remoteUser}]]</span>
+			<form sec:authorize="isAuthenticated()" th:action="@{/logout}"
+				method="post">
+				<button type="submit" class="btn btn-sm btn-primary">Sair</button>
+			</form>
+		</div>
+	</nav>
+
+	<div class="container mt-3 mb-3">
+		<form action="/usuario/salvar" method="post" th:object="${usuario}">
+			<input type="hidden" th:field="*{id}">
+			<div class="form-group">
+				<label for="nome">Nome:</label> <input class="form-control"
+					type="text" placeholder="Digite o nome aqui" th:field="*{nome}">
+			</div>
+			<div class="form-group">
+				<label for="preco">CPF:</label> <input class="form-control"
+					type="number" placeholder="Digite o cpf aqui" th:field="*{cpf}">
+			</div>
+			<div class="form-group">
+				<label for="nome">Data de nascimento: </label> <input
+					class="form-control" type="text" placeholder="dd/mm/aaaa"
+					th:field="*{dataNascimento}">
+			</div>
+			<div class="form-group">
+				<label for="nome">Endereço: </label> <input class="form-control"
+					type="text" placeholder="Digite o endereço aqui"
+					th:field="*{endereco}">
+			</div>
+			<div class="form-group">
+				<label for="nome">E-mail:</label> <input class="form-control"
+					type="email" placeholder="Digite o email aqui" th:field="*{email}">
+			</div>
+			<div class="form-group">
+				<label for="nome">Senha:</label> <input class="form-control"
+					type="password" placeholder="Digite a senha aqui"
+					th:field="*{senha}">
+			</div>
+			<button class="btn btn-primary" type="submit">Cadastrar</button>
+		</form>
+	</div>
 </body>
 </html>

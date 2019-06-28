@@ -10,14 +10,53 @@
 </head>
 
 <body>
-	<h1>Pratos</h1>
-	<ul th:each="prato : ${pratos}">
-		<li th:text="${prato.id}"></li>
-		<li th:text="${prato.nome}"></li>
-		<li th:text="${prato.preco}"></li>
-		<li><a th:href="@{/prato/excluir/{id}(id=${prato.id})}">Deletar</a></li>
-		<li><a th:href="@{/prato/atualizar/{id}(id=${prato.id})}">Atualizar</a></li>
-		<li><a th:href="@{/carrinho/adicionar/{id}(id=${prato.id})}">Comprar</a></li>
-	</ul>
+	<nav id="top" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{'/'}">Tempero Bessa</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{'/'}">Inicio</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{'/prato/listar'}">Pratos</a></li>
+				<li sec:authorize="isAnonymous()" class="nav-item"><a
+					class="nav-link" th:href="@{'/usuario/login'}">Login</a></li>
+				<li sec:authorize="isAnonymous()" class="nav-item"><a
+					class="nav-link" th:href="@{'/usuario/cadastro'}">Cadastro</a></li>
+			</ul>
+			<span sec:authorize="isAuthenticated()" class="text-light mr-1">Olá,
+				[[${#httpServletRequest.remoteUser}]]</span>
+			<form sec:authorize="isAuthenticated()" th:action="@{/logout}"
+				method="post">
+				<button type="submit" class="btn btn-sm btn-primary">Sair</button>
+			</form>
+		</div>
+	</nav>
+
+	<div class="container mt-3">
+		<h2>Lista de Pratos</h2>
+		<a sec:authorize="hasRole('ROLE_GERENTE')" class="btn btn-primary mt-1 mb-2" th:href="@{'/prato/cadastrar/'}">Adicionar Produto</a>
+		<div class="container mt-3">
+			<div class="row justify-content-center" th:each="prato : ${pratos}">
+				<div class="col-6">
+					<div class="card border-dark m-1">
+						<!-- <img src="..." class="card-img-top" alt="..."> -->
+						<div class="card-body text-center">
+							<img class="img-fluid" th:src="@{'/images/' + ${prato.nome} + '.png'}">
+							<h5 class="card-title mt-2" th:text="${prato.nome}"></h5>
+							<p class="card-text" th:text="${prato.preco}"></p>
+							<a th:href="@{/carrinho/adicionar/{id}(id=${prato.id})}"
+								class="btn btn-primary">Comprar</a>
+								
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

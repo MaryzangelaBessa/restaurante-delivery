@@ -27,7 +27,7 @@ public class UsuarioController {
 	public ModelAndView create() {
 		ModelAndView mv = new ModelAndView("CadastroUsuario");
 		mv.addObject("usuario", new Usuario());
-		return mv;
+		return mv = new ModelAndView("redirect:/");
 	}
 
 	@GetMapping("/login")

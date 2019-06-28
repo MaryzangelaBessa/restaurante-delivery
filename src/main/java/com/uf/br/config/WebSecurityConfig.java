@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests().antMatchers("/usuario/cadastro").permitAll()
-				.antMatchers("/prato/cadastro", "/prato/excluir/**", "/prato/atualizar/**").hasRole("GERENTE")
+				.antMatchers("/prato/atualizar/**").hasRole("GERENTE")
 				.antMatchers("/", "/usuario/listar", "/usuario/cadastro", "/usuario/salvar").permitAll().anyRequest()
 				.authenticated().and().formLogin().loginPage("/usuario/login").permitAll().defaultSuccessUrl("/").and()
 				.logout().logoutSuccessUrl("/usuario/login?logout").permitAll();

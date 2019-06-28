@@ -10,6 +10,33 @@
 </head>
 
 <body>
+	<nav id="top" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{'/'}">Tempero Bessa</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" th:href="@{'/'}">Inicio</a></li>
+				<li class="nav-item"><a class="nav-link"
+					th:href="@{'/pratos/listar'}">Pratos</a></li>
+				<li sec:authorize="isAnonymous()" class="nav-item"><a
+					class="nav-link" th:href="@{'/usuario/login'}">Login</a></li>
+				<li sec:authorize="isAnonymous()" class="nav-item"><a
+					class="nav-link" th:href="@{'/usuario/cadastro'}">Cadastro</a></li>
+			</ul>
+			<span sec:authorize="isAuthenticated()" class="text-light mr-1">Olá,
+				[[${#httpServletRequest.remoteUser}]]</span>
+			<form sec:authorize="isAuthenticated()" th:action="@{/logout}"
+				method="post">
+				<button type="submit" class="btn btn-sm btn-primary">Sair</button>
+			</form>
+		</div>
+	</nav>
+
 	<h1>Usuarios</h1>
 	<ul th:each="usuario : ${usuarios}">
 		<li th:text="${usuario.id}"></li>
